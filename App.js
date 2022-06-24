@@ -5,6 +5,7 @@ import Navigator from "./navigator";
 import { DBContext } from "./context";
 import * as SplashScreen from "expo-splash-screen";
 import { View } from "react-native";
+import { setTestDeviceIDAsync } from "expo-ads-admob";
 
 const FeelingSchema = {
   name: "Feeling",
@@ -22,6 +23,7 @@ export default function App() {
 
   useEffect(() => {
     const preload = async () => {
+      await setTestDeviceIDAsync("EMULATOR");
       const connection = await Realm.open({
         path: "myDiaryDB",
         schema: [FeelingSchema],
